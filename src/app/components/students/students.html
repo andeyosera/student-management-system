@@ -1,0 +1,80 @@
+<div class="container">
+  <h1>Student Management System</h1>
+  
+  <!-- Add/Edit Student Form -->
+  <div class="add-student-form">
+    <h2>{{ isEditMode ? 'Edit Student' : 'Add New Student' }}</h2>
+    <form (ngSubmit)="saveStudent()">
+      <div class="form-group">
+        <label>First Name:</label>
+        <input type="text" [(ngModel)]="newStudent.first_name" name="first_name" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Last Name:</label>
+        <input type="text" [(ngModel)]="newStudent.last_name" name="last_name" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" [(ngModel)]="newStudent.email" name="email" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Date of Birth:</label>
+        <input type="date" [(ngModel)]="newStudent.date_of_birth" name="date_of_birth">
+      </div>
+      
+      <div class="form-group">
+        <label>Grade:</label>
+        <input type="text" [(ngModel)]="newStudent.grade" name="grade" placeholder="e.g., Grade 10">
+      </div>
+      
+      <div class="form-buttons">
+        <button type="submit" class="submit-btn">
+          {{ isEditMode ? 'Update Student' : 'Add Student' }}
+        </button>
+        <button type="button" class="cancel-btn" *ngIf="isEditMode" (click)="resetForm()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+  
+  <!-- Students List -->
+  <div class="students-list">
+    <h2>All Students</h2>
+    
+    <div *ngIf="students.length === 0" class="no-students">
+      No students yet. Add your first student above!
+    </div>
+    
+    <table *ngIf="students.length > 0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Date of Birth</th>
+          <th>Grade</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{ student.id }}</td>
+          <td>{{ student.first_name }}</td>
+          <td>{{ student.last_name }}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ student.date_of_birth || 'N/A' }}</td>
+          <td>{{ student.grade || 'N/A' }}</td>
+          <td>
+            <button class="edit-btn" (click)="editStudent(student)">Edit</button>
+            <button class="delete-btn" (click)="deleteStudent(student.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
