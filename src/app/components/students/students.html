@@ -40,29 +40,70 @@
       </div>
     </form>
   </div>
+  <!-- Search Box -->
+  <div class="search-box">
+    <input 
+      type="text" 
+      [(ngModel)]="searchText" 
+      (ngModelChange)="filterStudents()"
+      placeholder="Search by name, email, or grade..."
+      class="search-input"
+    />
+  </div>
   
   <!-- Students List -->
+ 
   <div class="students-list">
     <h2>All Students</h2>
     
-    <div *ngIf="students.length === 0" class="no-students">
-      No students yet. Add your first student above!
-    </div>
+    <div *ngIf="filteredStudents.length === 0" class="no-students">
+  {{ searchText ? 'No students found matching your search.' : 'No students yet. Add your first student above!' }}
+</div>
     
-    <table *ngIf="students.length > 0">
+    <table *ngIf="filteredStudents.length > 0">
       <thead>
-        <tr>
-          <th>ID</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th>Date of Birth</th>
-          <th>Grade</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
+  <tr>
+    <th (click)="sortStudents('id')" class="sortable">
+      ID 
+      <span class="sort-icon" *ngIf="sortColumn === 'id'">
+        {{ sortDirection === 'asc' ? '▲' : '▼' }}
+      </span>
+    </th>
+    <th (click)="sortStudents('first_name')" class="sortable">
+      First Name 
+      <span class="sort-icon" *ngIf="sortColumn === 'first_name'">
+        {{ sortDirection === 'asc' ? '▲' : '▼' }}
+      </span>
+    </th>
+    <th (click)="sortStudents('last_name')" class="sortable">
+      Last Name 
+      <span class="sort-icon" *ngIf="sortColumn === 'last_name'">
+        {{ sortDirection === 'asc' ? '▲' : '▼' }}
+      </span>
+    </th>
+    <th (click)="sortStudents('email')" class="sortable">
+      Email 
+      <span class="sort-icon" *ngIf="sortColumn === 'email'">
+        {{ sortDirection === 'asc' ? '▲' : '▼' }}
+      </span>
+    </th>
+    <th (click)="sortStudents('date_of_birth')" class="sortable">
+      Date of Birth 
+      <span class="sort-icon" *ngIf="sortColumn === 'date_of_birth'">
+        {{ sortDirection === 'asc' ? '▲' : '▼' }}
+      </span>
+    </th>
+    <th (click)="sortStudents('grade')" class="sortable">
+      Grade 
+      <span class="sort-icon" *ngIf="sortColumn === 'grade'">
+        {{ sortDirection === 'asc' ? '▲' : '▼' }}
+      </span>
+    </th>
+    <th>Actions</th>
+  </tr>
+</thead>
       <tbody>
-        <tr *ngFor="let student of students">
+       <tr *ngFor="let student of filteredStudents">
           <td>{{ student.id }}</td>
           <td>{{ student.first_name }}</td>
           <td>{{ student.last_name }}</td>

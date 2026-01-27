@@ -23,6 +23,10 @@ export class StudentsComponent implements OnInit {
 
   isEditMode = false;
   editingStudentId: number | null = null;
+  searchText = '';
+  filteredStudents: any[] = [];
+  sortColumn: string = '';
+  sortDirection: 'asc' | 'desc' = 'asc';
 
   constructor(private supabaseService: SupabaseService) {}
 
@@ -32,6 +36,7 @@ export class StudentsComponent implements OnInit {
 
   async loadStudents() {
     this.students = await this.supabaseService.getStudents();
+    this.filterStudents();
   }
 
   async addStudent() {
@@ -100,5 +105,46 @@ export class StudentsComponent implements OnInit {
     } else {
       await this.addStudent();
     }
+  }
+  filterStudents() {
+    if (!this.searchText.trim()) {
+      this.filteredStudents = this.students;
+    } else {
+      const searchLower = this.searchText.toLowerCase();
+      this.filteredStudents = this.students.filter(student =>
+        student.first_name.toLowerCase().includes(searchLower) ||
+        student.last_name.toLowerCase().includes(searchLower) ||
+        student.email.toLowerCase().includes(searchLower) ||
+        (student.grade && student.grade.toLowerCase().includes(searchLower))
+      );
+    }
+  }
+  sortStudents(column: string) {
+    // If clicking the same column, toggle direction
+    if (this.sortColumn === column) {
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      // New column, default to ascending
+      this.sortColumn = column;
+      this.sortDirection = 'asc';
+    }
+
+    // Sort the filtered students
+    this.filteredStudents.sort((a, b) => {
+      let valueA = a[column] || '';
+      let valueB = b[column] || '';
+
+      // Convert to lowercase for string comparison
+      if (typeof valueA === 'string') valueA = valueA.toLowerCase();
+      if (typeof valueB === 'string') valueB = valueB.toLowerCase();
+
+      if (valueA < valueB) {
+        return this.sortDirection === 'asc' ? -1 : 1;
+      }
+      if (valueA > valueB) {
+        return this.sortDirection === 'asc' ? 1 : -1;
+      }
+      return 0;
+    });
   }
 }
