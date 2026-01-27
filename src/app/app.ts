@@ -1,13 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { NavbarComponent } from './components/navbar/navbar';
+import { DashboardComponent } from './components/dashboard/dashboard';
 import { StudentsComponent } from './components/students/students';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, StudentsComponent],
+  imports: [CommonModule, NavbarComponent, DashboardComponent, StudentsComponent],
   templateUrl: './app.html'
 })
 export class AppComponent {
-  title = 'student-management-system';
+  currentPage = 'dashboard';
+
+  onPageChange(page: string) {
+    this.currentPage = page;
+  }
 }

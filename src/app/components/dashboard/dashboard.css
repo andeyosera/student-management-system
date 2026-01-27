@@ -1,0 +1,176 @@
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 32px;
+}
+
+h2 {
+  color: #555;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.total-students {
+  border-left: 5px solid #4CAF50;
+}
+
+.total-grades {
+  border-left: 5px solid #2196F3;
+}
+
+.stat-icon {
+  font-size: 48px;
+}
+
+.stat-content h3 {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-number {
+  margin: 10px 0 0 0;
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Sections */
+.section {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+/* Grade Breakdown */
+.grade-breakdown {
+  margin-top: 20px;
+}
+
+.grade-item {
+  margin-bottom: 20px;
+}
+
+.grade-label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.grade-bar-container {
+  background: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 40px;
+  position: relative;
+}
+
+.grade-bar {
+  background: linear-gradient(90deg, #4CAF50, #45a049);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  transition: width 0.5s ease;
+  min-width: 60px;
+}
+
+.grade-count {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Recent Students */
+.recent-students {
+  margin-top: 20px;
+}
+
+.recent-student-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
+}
+
+.recent-student-item:last-child {
+  border-bottom: none;
+}
+
+.recent-student-item:hover {
+  background-color: #f9f9f9;
+}
+
+.student-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4CAF50, #2196F3);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.student-info {
+  flex: 1;
+}
+
+.student-name {
+  font-weight: bold;
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.student-details {
+  color: #666;
+  font-size: 14px;
+}
+
+/* No Data */
+.no-data {
+  text-align: center;
+  color: #999;
+  padding: 40px;
+  font-size: 16px;
+}

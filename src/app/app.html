@@ -1,1 +1,6 @@
-<app-students></app-students>
+<app-navbar (pageChange)="onPageChange($event)"></app-navbar>
+
+<div class="content">
+  <app-dashboard *ngIf="currentPage === 'dashboard'"></app-dashboard>
+  <app-students *ngIf="currentPage === 'students'"></app-students>
+</div>

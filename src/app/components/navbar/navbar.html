@@ -1,0 +1,19 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <h1>🎓 Student Management System</h1>
+  </div>
+  <div class="navbar-menu">
+    <button 
+      class="nav-item" 
+      [class.active]="currentPage === 'dashboard'"
+      (click)="navigate('dashboard')">
+      📊 Dashboard
+    </button>
+    <button 
+      class="nav-item" 
+      [class.active]="currentPage === 'students'"
+      (click)="navigate('students')">
+      👥 Students
+    </button>
+  </div>
+</nav>
