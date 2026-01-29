@@ -1,12 +1,14 @@
+import { StudentDetailsComponent } from '../student-details/student-details';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SupabaseService } from '../../services/supabase.service';
 
+
 @Component({
   selector: 'app-students',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, StudentDetailsComponent],
   templateUrl: './students.html',
   styleUrls: ['./students.css']
 })
@@ -27,6 +29,7 @@ export class StudentsComponent implements OnInit {
   filteredStudents: any[] = [];
   sortColumn: string = '';
   sortDirection: 'asc' | 'desc' = 'asc';
+  selectedStudent: any = null;
 
   constructor(private supabaseService: SupabaseService) {}
 
@@ -146,5 +149,17 @@ export class StudentsComponent implements OnInit {
       }
       return 0;
     });
+  }
+  viewStudentDetails(student: any) {
+    this.selectedStudent = student;
+  }
+
+  closeStudentDetails() {
+    this.selectedStudent = null;
+  }
+
+  async onStudentUpdated() {
+    await this.loadStudents();
+    this.selectedStudent = null;
   }
 }

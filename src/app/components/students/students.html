@@ -59,6 +59,13 @@
     <div *ngIf="filteredStudents.length === 0" class="no-students">
   {{ searchText ? 'No students found matching your search.' : 'No students yet. Add your first student above!' }}
 </div>
+<!-- Student Details Modal -->
+<app-student-details 
+  *ngIf="selectedStudent"
+  [student]="selectedStudent"
+  (close)="closeStudentDetails()"
+  (studentUpdated)="onStudentUpdated()">
+</app-student-details>
     
     <table *ngIf="filteredStudents.length > 0">
       <thead>
@@ -103,19 +110,20 @@
   </tr>
 </thead>
       <tbody>
-       <tr *ngFor="let student of filteredStudents">
+       <tr *ngFor="let student of filteredStudents" class="clickable-row" (click)="viewStudentDetails(student)">
           <td>{{ student.id }}</td>
           <td>{{ student.first_name }}</td>
           <td>{{ student.last_name }}</td>
           <td>{{ student.email }}</td>
           <td>{{ student.date_of_birth || 'N/A' }}</td>
           <td>{{ student.grade || 'N/A' }}</td>
-          <td>
-            <button class="edit-btn" (click)="editStudent(student)">Edit</button>
-            <button class="delete-btn" (click)="deleteStudent(student.id)">Delete</button>
-          </td>
+          <td (click)="$event.stopPropagation()">
+  <button class="edit-btn" (click)="editStudent(student)">Edit</button>
+  <button class="delete-btn" (click)="deleteStudent(student.id)">Delete</button>
+</td>
         </tr>
       </tbody>
     </table>
   </div>
+
 </div>

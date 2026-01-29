@@ -1,0 +1,76 @@
+<div class="details-overlay" (click)="closeDetails()">
+  <div class="details-card" (click)="$event.stopPropagation()">
+    <!-- Header -->
+    <div class="details-header">
+      <button class="close-btn" (click)="closeDetails()">✕</button>
+      <div class="student-avatar-large">{{ getInitials() }}</div>
+      <h2 *ngIf="!isEditMode">{{ student.first_name }} {{ student.last_name }}</h2>
+      <div *ngIf="isEditMode" class="edit-name">
+        <input type="text" [(ngModel)]="editedStudent.first_name" placeholder="First Name">
+        <input type="text" [(ngModel)]="editedStudent.last_name" placeholder="Last Name">
+      </div>
+    </div>
+
+    <!-- Details Content -->
+    <div class="details-content">
+      <!-- View Mode -->
+      <div *ngIf="!isEditMode" class="info-section">
+        <div class="info-row">
+          <span class="info-label">📧 Email:</span>
+          <span class="info-value">{{ student.email }}</span>
+        </div>
+        
+        <div class="info-row">
+          <span class="info-label">🎂 Date of Birth:</span>
+          <span class="info-value">{{ student.date_of_birth || 'Not provided' }}</span>
+        </div>
+        
+        <div class="info-row">
+          <span class="info-label">📚 Grade:</span>
+          <span class="info-value">{{ student.grade || 'Not assigned' }}</span>
+        </div>
+        
+        <div class="info-row">
+          <span class="info-label">🆔 Student ID:</span>
+          <span class="info-value">{{ student.id }}</span>
+        </div>
+        
+        <div class="info-row">
+          <span class="info-label">📅 Registered:</span>
+          <span class="info-value">{{ student.created_at | date:'medium' }}</span>
+        </div>
+      </div>
+
+      <!-- Edit Mode -->
+      <div *ngIf="isEditMode" class="edit-section">
+        <div class="form-group">
+          <label>📧 Email:</label>
+          <input type="email" [(ngModel)]="editedStudent.email">
+        </div>
+        
+        <div class="form-group">
+          <label>🎂 Date of Birth:</label>
+          <input type="date" [(ngModel)]="editedStudent.date_of_birth">
+        </div>
+        
+        <div class="form-group">
+          <label>📚 Grade:</label>
+          <input type="text" [(ngModel)]="editedStudent.grade" placeholder="e.g., Grade 10">
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="details-actions">
+      <div *ngIf="!isEditMode">
+        <button class="btn-edit" (click)="enableEdit()">✏️ Edit</button>
+        <button class="btn-delete" (click)="deleteStudent()">🗑️ Delete</button>
+      </div>
+      
+      <div *ngIf="isEditMode">
+        <button class="btn-save" (click)="saveChanges()">💾 Save Changes</button>
+        <button class="btn-cancel" (click)="cancelEdit()">❌ Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
