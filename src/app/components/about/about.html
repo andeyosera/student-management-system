@@ -1,0 +1,84 @@
+<!-- Hero Section -->
+<section class="about-hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>About SchoolHub</h1>
+    <p>Empowering Education Through Technology</p>
+  </div>
+</section>
+
+<!-- Mission Section -->
+<section class="mission-section">
+  <div class="container">
+    <div class="mission-content">
+      <h2>Our Mission</h2>
+      <p class="mission-text">
+        At SchoolHub, we believe that every student deserves access to quality education 
+        supported by modern technology. Our mission is to empower educational institutions 
+        with powerful, easy-to-use management tools that streamline operations and enhance 
+        the learning experience.
+      </p>
+      
+      <div class="mission-stats">
+        <div class="mission-stat">
+          <div class="stat-icon">🏫</div>
+          <h3>Founded in 2020</h3>
+          <p>6 years of educational excellence</p>
+        </div>
+        <div class="mission-stat">
+          <div class="stat-icon">🌍</div>
+          <h3>Global Reach</h3>
+          <p>Serving schools worldwide</p>
+        </div>
+        <div class="mission-stat">
+          <div class="stat-icon">⭐</div>
+          <h3>Award Winning</h3>
+          <p>Recognized for innovation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values Section -->
+<section class="values-section">
+  <div class="container">
+    <h2>Our Core Values</h2>
+    <div class="values-grid">
+      <div class="value-card" *ngFor="let value of values">
+        <div class="value-icon">{{ value.icon }}</div>
+        <h3>{{ value.title }}</h3>
+        <p>{{ value.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section class="team-section">
+  <div class="container">
+    <h2>Meet Our Team</h2>
+    <p class="team-intro">Dedicated professionals committed to educational excellence</p>
+    
+    <div class="team-grid">
+      <div class="team-card" *ngFor="let member of teamMembers">
+        <div class="team-avatar">{{ member.image }}</div>
+        <h3>{{ member.name }}</h3>
+        <p class="team-role">{{ member.role }}</p>
+        <p class="team-description">{{ member.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="cta-content">
+    <h2>Ready to Join Us?</h2>
+    <p>Get in touch to learn more about SchoolHub</p>
+    <div class="cta-buttons">
+      <button class="btn-primary" (click)="goToContact()">Contact Us</button>
+      <button class="btn-secondary" (click)="goToHome()">Back to Home</button>
+    </div>
+  </div>
+</section>

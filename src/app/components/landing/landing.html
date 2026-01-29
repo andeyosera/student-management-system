@@ -1,0 +1,83 @@
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Welcome to SchoolHub</h1>
+    <p class="hero-subtitle">Modern School Management Made Simple</p>
+    <p class="hero-description">
+      Streamline your educational institution with our comprehensive management system. 
+      Track students, manage courses, and analyze performance all in one place.
+    </p>
+    <div class="hero-buttons">
+      <button class="btn-primary" (click)="goToLogin()">Get Started</button>
+      <button class="btn-secondary" (click)="goToAbout()">Learn More</button>
+    </div>
+  </div>
+  <div class="hero-illustration">
+    <div class="illustration-circle"></div>
+    <div class="illustration-icon">🎓</div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+  <div class="stats-container">
+    <div class="stat-item" *ngFor="let stat of stats">
+      <div class="stat-number">{{ stat.number }}</div>
+      <div class="stat-label">{{ stat.label }}</div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+  <div class="section-header">
+    <h2>Powerful Features</h2>
+    <p>Everything you need to manage your school efficiently</p>
+  </div>
+  
+  <div class="features-grid">
+    <div class="feature-card" *ngFor="let feature of features">
+      <div class="feature-icon">{{ feature.icon }}</div>
+      <h3>{{ feature.title }}</h3>
+      <p>{{ feature.description }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="cta-content">
+    <h2>Ready to Transform Your School?</h2>
+    <p>Join hundreds of educational institutions using SchoolHub</p>
+    <button class="btn-cta" (click)="goToLogin()">Start Free Trial</button>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>SchoolHub</h3>
+      <p>Modern school management for the digital age</p>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a (click)="goToAbout()">About Us</a></li>
+        <li><a (click)="goToContact()">Contact</a></li>
+        <li><a (click)="goToLogin()">Login</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <p>📧 info@schoolhub.com</p>
+      <p>📞 +254 700 000 000</p>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; 2026 SchoolHub. All rights reserved.</p>
+  </div>
+</footer>

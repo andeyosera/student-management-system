@@ -42,3 +42,19 @@
   background: rgba(255, 255, 255, 0.2);
   font-weight: bold;
 }
+.navbar-brand {
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.navbar-brand:hover {
+  opacity: 0.8;
+}
+
+.nav-item-logout {
+  background: rgba(244, 67, 54, 0.2);
+}
+
+.nav-item-logout:hover {
+  background: rgba(244, 67, 54, 0.3);
+}

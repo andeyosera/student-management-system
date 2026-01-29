@@ -1,6 +1,27 @@
-<app-navbar (pageChange)="onPageChange($event)"></app-navbar>
+<!-- Show navbar only for management pages -->
+<app-navbar 
+  *ngIf="currentPage === 'dashboard' || currentPage === 'students'" 
+  (pageChange)="onPageChange($event)">
+</app-navbar>
 
-<div class="content">
+<!-- Public Pages -->
+<app-landing 
+  *ngIf="currentPage === 'home'" 
+  (navigate)="onPageChange($event)">
+</app-landing>
+
+<app-about 
+  *ngIf="currentPage === 'about'" 
+  (navigate)="onPageChange($event)">
+</app-about>
+
+<app-contact 
+  *ngIf="currentPage === 'contact'" 
+  (navigate)="onPageChange($event)">
+</app-contact>
+
+<!-- Management Pages -->
+<div class="content" *ngIf="currentPage === 'dashboard' || currentPage === 'students'">
   <app-dashboard *ngIf="currentPage === 'dashboard'"></app-dashboard>
   <app-students *ngIf="currentPage === 'students'"></app-students>
 </div>

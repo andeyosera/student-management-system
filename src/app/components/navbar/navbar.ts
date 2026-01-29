@@ -16,4 +16,8 @@ export class NavbarComponent {
     this.currentPage = page;
     this.pageChange.emit(page);
   }
+
+  goHome() {
+    this.pageChange.emit('home');
+  }
 }
