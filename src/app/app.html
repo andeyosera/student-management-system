@@ -20,6 +20,17 @@
   (navigate)="onPageChange($event)">
 </app-contact>
 
+<!-- Auth Pages -->
+<app-login 
+  *ngIf="currentPage === 'login'" 
+  (navigate)="onPageChange($event)">
+</app-login>
+
+<app-register 
+  *ngIf="currentPage === 'register'" 
+  (navigate)="onPageChange($event)">
+</app-register>
+
 <!-- Management Pages -->
 <div class="content" *ngIf="currentPage === 'dashboard' || currentPage === 'students'">
   <app-dashboard *ngIf="currentPage === 'dashboard'"></app-dashboard>

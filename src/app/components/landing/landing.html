@@ -8,7 +8,7 @@
       Track students, manage courses, and analyze performance all in one place.
     </p>
     <div class="hero-buttons">
-      <button class="btn-primary" (click)="goToLogin()">Get Started</button>
+      <button class="btn-primary" (click)="navigate.emit('login')">Get Started</button>
       <button class="btn-secondary" (click)="goToAbout()">Learn More</button>
     </div>
   </div>
@@ -49,7 +49,7 @@
   <div class="cta-content">
     <h2>Ready to Transform Your School?</h2>
     <p>Join hundreds of educational institutions using SchoolHub</p>
-    <button class="btn-cta" (click)="goToLogin()">Start Free Trial</button>
+    <button class="btn-cta" (click)="navigate.emit('login')">Start Free Trial</button>
   </div>
 </section>
 
